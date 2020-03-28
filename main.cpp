@@ -60,18 +60,24 @@ constexpr int fibonacci(const int n)
     return fibonacci(n-1) + fibonacci(n-2);
 }
 
+template<class DerivedType, class... Arguments>
+std::shared_ptr<Shape> make_shape(Arguments&&... args)
+{
+    return make_shared<DerivedType>(forward<Arguments>(args)...);
+}
+
 int main()
 {
-    constexpr int x = fibonacci(45);
+    int x = fibonacci(45);
     cout << x;
     Collection shapes = {
-        make_shared<Circle>(2.0, Color::GREEN),
-        make_shared<Circle>(3.0),
+        make_shape<Circle>(2.0, Color::GREEN),
+        make_shape<Circle>(3.0),
         nullptr,
-        make_shared<Circle>(4.0),
-        make_shared<Rectangle>(10.0, 5.0),
-        make_shared<Square>(3.0),
-        make_shared<Circle>(4.0),
+        make_shape<Circle>(4.0),
+        make_shape<Rectangle>(10.0, 5.0),
+        make_shape<Square>(3.0),
+        make_shape<Circle>(4.0),
     };
 
     printCollectionElements(shapes);
@@ -91,7 +97,7 @@ int main()
     cout << "Areas after sort: " << std::endl;
     printAreas(shapes);
 
-    auto square = make_shared<Square>(4.0);
+    auto square = make_shape<Square>(4.0);
     shapes.push_back(square);
 
     findFirstShapeMatchingPredicate(shapes, [](auto s)
