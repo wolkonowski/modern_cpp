@@ -13,7 +13,5 @@ set(SRC_LIST
     main.cpp
 )
 
-add_executable(${PROJECT_NAME} ${SRC_LIST})
 add_compile_options(${PROJECT_NAME} -Wall -Werror -Wpedantic -Wextra)
-# shhh... don't ask about commented section ;)
-# target_compile_options(${PROJECT_NAME} PUBLIC -Wall -Werror -Wpedantic -Wextra)
+add_executable(${PROJECT_NAME} ${SRC_LIST})
