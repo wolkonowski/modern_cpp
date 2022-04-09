@@ -19,21 +19,30 @@ Or use QT Creator... (or other IDE).
 
 1. `nullptr`:
     Change all `NULL` to `nullptr`s
+    DONE
 2. `using` alias:
     Change `typedef` to `using` alias
+    DONE
 3. Scoped `enum`:
     Write a new scoped `enum` named `Color` and define in it 3 colors of your choice. Inherit from unsigned char.
     Add a new field: `Color color` in the `Shape` class, so that every shape has it's own defined color.
+    DONE
 4. `auto`:
     Use `auto`, wherever you should.
+    DONE
 5. Range-based for loop:
     Use range-based for loops, wherever possible.
+    DONE
 6. `default`, `delete`:
     Mark copy constructors as `default`.
+    DONE
     Delete `getY()` method in `Square` and all default constructors of shapes
+    DONE
 7. `final`, `override`:
     Mark `Circle` class as `final`
+    DONE
     Mark `getX()` in `Rectangle` as `final`. What is the problem?
+    We need to mark this method as virtual as well.
     Mark all overridden virtual methods. Can you spot the problem?
 8. `constexpr`:
     Write a function that calculates n-th Fibonacci's number. Do not mark it `constexpr`.
