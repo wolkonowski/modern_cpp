@@ -81,12 +81,17 @@ Or use QT Creator... (or other IDE).
     DONE
 3. Move semantics:
     Add move constructors and move assignment operators to all shapes.
+    DONE
     Mark them as `noexcept`.
+    DONE
     What about Rule of 5?
+    ????
     Move some shapes into the collection.
+    ERROR
 4. Delegating constructors:
     Add a new constructor, which takes also the previously defined Color of a shape. You can use a default parameter for `Color`.
     Delegate a call in the old constructor to the new one.
+    DONE
 5. Variadic templates:
     Write a factory method which should work like `std::make_shared`.
     It should have below signature:
@@ -95,4 +100,4 @@ Or use QT Creator... (or other IDE).
     std::shared_ptr<Shape> make_shape(Arguments&&... args);
     ```
     Inside, it should create a `shared_ptr` to `DerivedType` and pass all arguments into constructor of `DerivedType` via perfect forwarding.
-       
+    DONE

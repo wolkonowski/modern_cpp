@@ -70,6 +70,15 @@ constexpr int fibonacci(int n)
 constexpr int foo(int k) {
     return k;
 }
+
+template<class DerivedType, class... Arguments>
+    std::shared_ptr<Shape> make_shape(Arguments&&... args)
+    {
+        return make_shared<DerivedType>(std::forward<Arguments>(args)...);
+    }
+
+
+
 int main()
 {
     constexpr int k = fibonacci(45);
@@ -100,6 +109,9 @@ int main()
     //std::initializer_list<Color> list = {Color::BLUE, Color::RED};
     Rectangle r(Color::RED);
     Square ss(Color::BLUE);
+    vector<Shape> coll;
+    //coll.push_back(std::move(r));
+    //coll.push_back(std::move(ss));
 
     return 0;
 }
