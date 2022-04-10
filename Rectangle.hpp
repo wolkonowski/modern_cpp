@@ -1,14 +1,15 @@
 #pragma once
 
 #include "Shape.hpp"
-
+#include <utility>
 class Rectangle : public Shape
 {
     using Shape::Shape;
 public:
     Rectangle(double x, double y);
     Rectangle(const Rectangle & other) = default;
-    Rectangle(Rectangle &&) noexcept = default;
+    Rectangle& operator=(Rectangle&) = default;
+    Rectangle(Rectangle && r) noexcept = default;
     Rectangle& operator=(Rectangle&&) noexcept = default;
     virtual double getArea() const override;
     virtual double getPerimeter() const override;

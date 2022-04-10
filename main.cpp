@@ -107,11 +107,13 @@ int main()
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
     //std::initializer_list<Color> list = {Color::BLUE, Color::RED};
-    Rectangle r(Color::RED);
-    Square ss(Color::BLUE);
-    vector<Shape> coll;
-    //coll.push_back(std::move(r));
-    //coll.push_back(std::move(ss));
+    vector<Rectangle> coll;
+    coll.push_back(std::move(Rectangle(Color::RED)));
+    coll.push_back(std::move(Rectangle(Color::BLUE)));
+    //why can't I do this?
+    vector<Shape> sh;
+    //sh.push_back(Rectangle(2.0,3.0));
+    //sh.push_back(std::move(Square(Color::BLUE)));
 
     return 0;
 }

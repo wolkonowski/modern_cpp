@@ -8,6 +8,7 @@ class Square : public Rectangle
 public:
     Square(double x);
     Square(const Square & other) = default;
+    Square& operator=(Square&) = default;
     Square(Square &&) noexcept = default;
     Square& operator=(Square&&) noexcept = default;
     Square(Color c) : Rectangle(c){

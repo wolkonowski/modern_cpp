@@ -85,9 +85,9 @@ Or use QT Creator... (or other IDE).
     Mark them as `noexcept`.
     DONE
     What about Rule of 5?
-    ????
+    Copy assignment added, dtor default from parent class
     Move some shapes into the collection.
-    ERROR
+    DONE
 4. Delegating constructors:
     Add a new constructor, which takes also the previously defined Color of a shape. You can use a default parameter for `Color`.
     Delegate a call in the old constructor to the new one.

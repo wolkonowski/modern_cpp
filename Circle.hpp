@@ -9,6 +9,7 @@ class Circle final: public Shape
 public:
     Circle(double r);
     Circle(const Circle & other) = default;
+    Circle& operator=(Circle&) = default;
     Circle(Circle &&) noexcept = default;
     Circle& operator=(Circle&&) noexcept = default;
     double getArea() const noexcept override;
