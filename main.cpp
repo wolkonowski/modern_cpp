@@ -7,32 +7,32 @@
 #include "Rectangle.hpp"
 #include "Square.hpp"
 #include "Circle.hpp"
+#include "Color.hpp"
 
 using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
 
-bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second)
-{
+auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second){
     if(first == nullptr || second == nullptr)
         return false;
-    return (first->getArea() < second->getArea());
-}
+    return (first->getArea() < second->getArea());};
 
-bool perimeterBiggerThan20(shared_ptr<Shape> s)
-{
+auto perimeterBiggerThan20 = [](shared_ptr<Shape> s){
     if(s)
         return (s->getPerimeter() > 20);
     return false;
-}
-
-bool areaLessThan10(shared_ptr<Shape> s)
-{
+};
+auto areaLessThan10 = [](shared_ptr<Shape> s) {
     if(s)
         return (s->getArea() < 10);
     return false;
-}
-
+};
+auto areaLessThanX = [x=10](shared_ptr<Shape> s) {
+    if(s)
+        return (s->getArea() < x);
+    return false;
+};
 void printCollectionElements(const Collection& collection)
 {
     for(auto it : collection)
@@ -62,9 +62,18 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
         cout << "There is no shape matching predicate " << info << endl;
     }
 }
-
+constexpr int fibonacci(int n)
+{
+    if (n<=1) return 1;
+    return fibonacci(n-1)+fibonacci(n-2);
+}
+constexpr int foo(int k) {
+    return k;
+}
 int main()
 {
+    constexpr int k = fibonacci(45);
+    foo(k);
     Collection shapes;
     shapes.push_back(make_shared<Circle>(2.0));
     shapes.push_back(make_shared<Circle>(3.0));
@@ -88,6 +97,9 @@ int main()
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+    //std::initializer_list<Color> list = {Color::BLUE, Color::RED};
+    Rectangle r(Color::RED);
+    Square ss(Color::BLUE);
 
     return 0;
 }

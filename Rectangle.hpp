@@ -4,15 +4,16 @@
 
 class Rectangle : public Shape
 {
+    using Shape::Shape;
 public:
     Rectangle(double x, double y);
     Rectangle(const Rectangle & other) = default;
 
-    double getArea() const override;
-    double getPerimeter() const override;
+    virtual double getArea() const override;
+    virtual double getPerimeter() const override;
     virtual double getX() const final;
     double getY() const;
-    void print() const;
+    virtual void print() const override;
 
 private:
     double x_;
