@@ -63,14 +63,14 @@ Or use QT Creator... (or other IDE).
     Use constructor inheritance to allow initialization of all shapes providing only a `Color` as a parameter. Create some shapes providing `Color` only param.
     DONE
     Add in-class field initialization for all shapes to safely use inherited constructor.
-    ?????
+    DONE
 10. Lambda functions:
     Change functions from `main.cpp` into lambdas (`sortByArea`, `perimeterBiggerThan20`, `areaLessThan10`)
     DONE
     Change lambda `areaLessThan10` into lambda `areaLessThanX`, which takes `x = 10` on a capture list. What is the problem?
-    DONE
+    DONE incompatible type
     Use `std::function` to solve the problem.
-    ?????
+    DONE
 ## Homework:
 
 1. Attributes:

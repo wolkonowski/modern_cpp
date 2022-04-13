@@ -28,7 +28,8 @@ auto areaLessThan10 = [](shared_ptr<Shape> s) {
         return (s->getArea() < 10);
     return false;
 };
-auto areaLessThanX = [x=10](shared_ptr<Shape> s) {
+
+std::function<bool(shared_ptr<Shape>)> areaLessThanX = [x=10](shared_ptr<Shape> s) {
     if(s)
         return (s->getArea() < x);
     return false;
@@ -46,9 +47,25 @@ void printAreas(const Collection& collection)
         if(it)
             cout << it->getArea() << std::endl;
 }
-
+/*
 void findFirstShapeMatchingPredicate(const Collection& collection,
                                      bool (*predicate)(shared_ptr<Shape> s),
+                                     std::string info)
+{
+    auto iter = std::find_if(collection.begin(), collection.end(), predicate);
+    if(*iter != nullptr)
+    {
+        cout << "First shape matching predicate: " << info << endl;
+        (*iter)->print();
+    }
+    else
+    {
+        cout << "There is no shape matching predicate " << info << endl;
+    }
+}
+*/
+void findFirstShapeMatchingPredicate(const Collection& collection,
+                                     std::function<bool(std::shared_ptr<Shape>)> predicate,
                                      std::string info)
 {
     auto iter = std::find_if(collection.begin(), collection.end(), predicate);
@@ -105,7 +122,9 @@ int main()
     shapes.push_back(square);
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
-    findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+    findFirstShapeMatchingPredicate(
+        shapes, areaLessThan10, "area less than 10");
+    findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than X");
     //std::initializer_list<Color> list = {Color::BLUE, Color::RED};
     vector<Rectangle> coll;
     coll.push_back(std::move(Rectangle(Color::RED)));
